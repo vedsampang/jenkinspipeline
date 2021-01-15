@@ -19,6 +19,29 @@ pipeline {
       }
     }
 
+    stage('Install NPM') {
+      steps {
+        echo 'Installing NPM'
+      }
+    }
+
+    stage('Execute Test') {
+      parallel {
+        stage('Execute Test') {
+          steps {
+            echo 'Executing Tests'
+          }
+        }
+
+        stage('Confirm Test') {
+          steps {
+            input(message: 'Do you want to continue', id: 'Ok')
+          }
+        }
+
+      }
+    }
+
   }
   environment {
     ChromeDriverPath = '~/Automation/webdrivers'
