@@ -9,14 +9,18 @@ pipeline {
           }
         }
 
-        stage('Stage 2') {
+        stage('Test') {
           steps {
             sleep 4
+            echo '"""ChromeDriverPath: ${ChromeDriverPath}"""'
           }
         }
 
       }
     }
 
+  }
+  environment {
+    ChromeDriverPath = '~/Automation/webdriverrs'
   }
 }
