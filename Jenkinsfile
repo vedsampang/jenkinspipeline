@@ -21,6 +21,6 @@ pipeline {
 
   }
   environment {
-    ChromeDriverPath = '~/Automation/webdriverrs'
+    ChromeDriverPath = '~/Automation/webdrivers'
   }
 }
