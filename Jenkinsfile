@@ -17,7 +17,7 @@ pipeline {
 
         stage('Write Test Log') {
           steps {
-            writeFile(file: 'LogTestFile.txt', text: 'This is the test log', encoding: 'UTF-8')
+            writeFile(file: 'LogTestFile.txt', text: 'This is the test log enter by user.', encoding: 'UTF-8')
           }
         }
 
