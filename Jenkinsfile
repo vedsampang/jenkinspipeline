@@ -41,6 +41,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Continuing Tests'
+            input(message: 'Continue Tests', id: 'Ok')
           }
         }
 
