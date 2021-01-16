@@ -34,7 +34,7 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            input(message: "Continue?", id: "Yes")
+            input(message: 'Continue?', id: 'Ok')
             echo 'Continuing Tests'
           }
         }
