@@ -36,6 +36,10 @@ pipeline {
 
     stage('Test') {
       parallel {
+                when {
+          branch: "master"
+        }
+
         stage('Test') {
           steps {
             echo 'Continuing Tests'
