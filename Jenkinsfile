@@ -35,10 +35,12 @@ pipeline {
     }
 
     stage('Test') {
+
+      when {
+        branch "master"
+      }
+
       parallel {
-        when {
-          branch "master"
-        }
 
         stage('Test') {
           steps {
