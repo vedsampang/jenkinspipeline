@@ -16,6 +16,12 @@ pipeline {
           }
         }
 
+        stage('Write Test Log') {
+          steps {
+            writeFile(file: 'TestLog.txt', text: 'This is the test log', encoding: 'UTF-8')
+          }
+        }
+
       }
     }
 
