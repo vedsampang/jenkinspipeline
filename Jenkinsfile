@@ -11,7 +11,6 @@ pipeline {
 
         stage('Test') {
           steps {
-            sleep 4
             echo """ChromeDriverPath: ${ChromeDriverPath}"""
           }
         }
