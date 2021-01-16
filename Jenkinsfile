@@ -17,7 +17,7 @@ pipeline {
 
         stage('Write Test Log') {
           steps {
-            writeFile(file: 'TestLog.txt', text: 'This is the test log', encoding: 'UTF-8')
+            writeFile(file: 'LogTestFile.txt', text: 'This is the test log', encoding: 'UTF-8')
           }
         }
 
@@ -31,9 +31,20 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        input(message: 'Continue?', id: 'Yes')
-        echo 'Continuing Tests'
+      parallel {
+        stage('Test') {
+          steps {
+            input(message: 'Continue?', id: 'Yes')
+            echo 'Continuing Tests'
+          }
+        }
+
+        stage('Artifacts') {
+          steps {
+            archiveArtifacts 'LogTestFile.txt'
+          }
+        }
+
       }
     }
 
