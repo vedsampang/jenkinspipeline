@@ -36,8 +36,8 @@ pipeline {
 
     stage('Test') {
       parallel {
-                when {
-          branch: "master"
+        when {
+          branch "master"
         }
 
         stage('Test') {
