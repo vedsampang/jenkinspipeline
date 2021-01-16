@@ -32,7 +32,7 @@ pipeline {
 
     stage('Execute Test') {
       steps {
-        input(message: 'Do to want to continue?', id: 'Yes')
+        input(message: 'Do to want to continue?', id: 'Ok')
         echo 'Executing Tests'
       }
     }
