@@ -30,10 +30,10 @@ pipeline {
       }
     }
 
-    stage('Execute Test') {
+    stage('Test') {
       steps {
-        input(message: 'Do to want to continue?', id: 'Ok')
-        echo 'Executing Tests'
+        input(message: 'Continue?', id: 'Yes')
+        echo 'Continuing Tests'
       }
     }
 
