@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Get Test Scripts for Github') {
           steps {
-            echo 'Hi, this is the first step'
+            echo 'Getting code from GitHub'
           }
         }
 
@@ -31,19 +31,9 @@ pipeline {
     }
 
     stage('Execute Test') {
-      parallel {
-        stage('Execute Test') {
-          steps {
-            echo 'Executing Tests'
-          }
-        }
-
-        stage('Confirm Test') {
-          steps {
-            input(message: 'Do you want to continue', id: 'Ok')
-          }
-        }
-
+      steps {
+        input(message: 'Do to want to continue?', id: 'Yes')
+        echo 'Executing Tests'
       }
     }
 
