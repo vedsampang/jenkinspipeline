@@ -12,7 +12,6 @@ pipeline {
         stage('Print Message') {
           steps {
             echo """ChromeDriverPath: ${ChromeDriverPath}"""
-            input(message: 'Continue?', id: 'Ok')
           }
         }
 
@@ -35,13 +34,10 @@ pipeline {
     }
 
     stage('Test') {
-
       when {
-        branch "main"
+        branch 'main'
       }
-
       parallel {
-
         stage('Test') {
           steps {
             echo 'Continuing Tests'
