@@ -9,17 +9,17 @@ pipeline {
           }
         }
 
-        stage('Test') {
+        stage('Print Message') {
           steps {
             echo """ChromeDriverPath: ${ChromeDriverPath}"""
+            input(message: 'Continue?', id: 'Ok')
           }
         }
 
         stage('Write Test Log') {
-          environment{
-            LocalVariable = "HelloLocal"
+          environment {
+            LocalVariable = 'HelloLocal'
           }
-
           steps {
             writeFile(file: 'LogTestFile.txt', text: "This is the value in global environment variable for ChromeDrivePath ${ChromeDriverPath} and localVariable is ${LocalVariable}")
           }
@@ -35,10 +35,15 @@ pipeline {
     }
 
     stage('Test') {
+
+      when {
+        branch "master"
+      }
+
       parallel {
+
         stage('Test') {
           steps {
-            input(message: 'Continue?', id: 'Ok')
             echo 'Continuing Tests'
           }
         }
@@ -51,9 +56,8 @@ pipeline {
 
       }
     }
+
   }
-
-
   environment {
     ChromeDriverPath = '~/Automation/webdrivers'
   }
