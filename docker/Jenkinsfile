@@ -5,9 +5,11 @@ pipeline {
 
   stages {
     stage ("Hello"){
-      sh "java -version"
-      echo "Getting working directory"
-      sh "pwd"
+      steps {
+        sh "java -version"
+        echo "Getting working directory"
+        sh "pwd"								
+      }
     }
   }
 }
